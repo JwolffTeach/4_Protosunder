@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
+public class MusicPlayer : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private void Awake() {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
         Invoke("StartLevel", 2f);
 	}
 	
