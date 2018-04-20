@@ -336,6 +336,11 @@ Prefab:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1143871637}
+    - target: {fileID: 114255740625888504, guid: 6d7afa73fcb1fce4cb4b65361a29bcbd,
+        type: 2}
+      propertyPath: scorePerHit
+      value: 5000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 65374448978959434, guid: 6d7afa73fcb1fce4cb4b65361a29bcbd, type: 2}
@@ -709,7 +714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdf24ef38b8b234baefbfe804ea0d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerHit: 12
 --- !u!1 &1337200029
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +881,11 @@ Prefab:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1143871637}
+    - target: {fileID: 114772321471684970, guid: bf374732b0ea2c34daa340dc2de7f746,
+        type: 2}
+      propertyPath: scorePerHit
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 65372491675068900, guid: bf374732b0ea2c34daa340dc2de7f746, type: 2}
@@ -1168,6 +1177,11 @@ Prefab:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1143871637}
+    - target: {fileID: 114772321471684970, guid: bf374732b0ea2c34daa340dc2de7f746,
+        type: 2}
+      propertyPath: scorePerHit
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 65372491675068900, guid: bf374732b0ea2c34daa340dc2de7f746, type: 2}
@@ -1302,7 +1316,6 @@ GameObject:
   - component: {fileID: 2146214918}
   - component: {fileID: 2146214917}
   - component: {fileID: 2146214916}
-  - component: {fileID: 2146214915}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1310,18 +1323,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2146214915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2146214914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bdf24ef38b8b234baefbfe804ea0d34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorePerHit: 12
 --- !u!114 &2146214916
 MonoBehaviour:
   m_ObjectHideFlags: 0
