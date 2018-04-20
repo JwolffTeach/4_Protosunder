@@ -4,36 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
-    [Tooltip("In ms^-1")] [SerializeField] float Speed = 20f;
+    [Header("General")]
+    [Tooltip("In ms^-1")] [SerializeField] float controlSpeed = 20f;
     [Tooltip("In m")] [SerializeField] float xRange = 5f;
     [Tooltip("In m")] [SerializeField] float yRange = 3f;
 
+    [Header("Screen-position Based")]
     [SerializeField] float positionPitchFactor = -5f;
     [SerializeField] float controlPitchFactor = -20f;
+
+    [Header("Control-throw Based")]
     [SerializeField] float positionYawFactor = 5f;
     [SerializeField] float controlRollFactor = -20f;
 
     float xThrow, yThrow;
+    bool isControlEnabled = true;
 
     // Use this for initialization
     void Start () {
 		
 	}
 
-    private void OnCollisionEnter(Collision collision) {
-        print("Player collided with " + collision.transform.name);
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        print("Player triggered " + other.transform.name);
-    }
-
     // Update is called once per frame
     void Update () {
-        ProcessTranslation();
-        ProcessRotation();
+        if (isControlEnabled) {
+            ProcessTranslation();
+            ProcessRotation();
+        }
     }
 
     private void ProcessRotation() {
@@ -56,16 +55,21 @@ public class Player : MonoBehaviour {
 
     private float xMovement() {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        float xOffset = xThrow * Speed * Time.deltaTime;
+        float xOffset = xThrow * controlSpeed * Time.deltaTime;
         float rawNewXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(rawNewXPos, -xRange, xRange);
         return clampedXPos;
     }
     private float yMovement() {
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        float yOffset = yThrow * Speed * Time.deltaTime;
+        float yOffset = yThrow * controlSpeed * Time.deltaTime;
         float rawNewYPos = transform.localPosition.y + yOffset;
         float clampedYPos = Mathf.Clamp(rawNewYPos, -yRange, yRange);
         return clampedYPos;
+    }
+
+    void OnPlayerDeath() {
+        isControlEnabled = false;
+        print("Movement stopped.");
     }
 }

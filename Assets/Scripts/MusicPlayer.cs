@@ -5,7 +5,13 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour {
 
     private void Awake() {
-        DontDestroyOnLoad(this.gameObject);
+        int numMusicPlayers = FindObjectsOfType<MusicPlayer>().Length;
+        if(numMusicPlayers > 1) {
+            Destroy(gameObject);
+        }
+        else {
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     // Use this for initialization
