@@ -21,9 +21,17 @@ public class Player : MonoBehaviour {
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnCollisionEnter(Collision collision) {
+        print("Player collided with " + collision.transform.name);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        print("Player triggered " + other.transform.name);
+    }
+
+    // Update is called once per frame
+    void Update () {
         ProcessTranslation();
         ProcessRotation();
     }
@@ -56,7 +64,6 @@ public class Player : MonoBehaviour {
     private float yMovement() {
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
         float yOffset = yThrow * Speed * Time.deltaTime;
-        print(yOffset);
         float rawNewYPos = transform.localPosition.y + yOffset;
         float clampedYPos = Mathf.Clamp(rawNewYPos, -yRange, yRange);
         return clampedYPos;
